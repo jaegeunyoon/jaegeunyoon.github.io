@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaegeun Yoon (윤재근) | Principal Mechanical Systems Engineer</title>
+  <meta name="description" content="Jaegeun Yoon — Principal Mechanical Systems Engineer, medical robotics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --sub: #4b5563;
+      --muted: #9ca3af;
+      --line: #e5e7eb;
+      --chip: #f3f4f6;
+      --accent: #2563eb;
+      --w: 760px;
+      --font: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --text: #e5e7eb;
+        --sub: #9ca3af;
+        --muted: #6b7280;
+        --line: #23262d;
+        --chip: #1a1d23;
+        --accent: #60a5fa;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+          }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top bar */
+    .top {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      max-width: var(--w); margin: 0 auto; padding: 0.7rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .top nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+    .top nav a { color: var(--sub); font-size: 0.85rem; }
+    .top nav a:hover { color: var(--text); text-decoration: none; }
+
+    main { max-width: var(--w); margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* Hero */
+    .hero { padding: 3rem 0 0.5rem; }
+    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; }
+    .hero h1 small { font-size: 1.1rem; font-weight: 500; color: var(--muted); margin-left: 0.4rem; }
+    .hero .title { margin-top: 0.3rem; color: var(--accent); font-weight: 600; }
+    .hero ul { margin-top: 0.8rem; }
+    .links { margin-top: 0.9rem; display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: 0.9rem; }
+
+    /* Sections */
+    section { padding-top: 2.2rem; scroll-margin-top: 3rem; }
+    h2 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); padding-bottom: 0.45rem; margin-bottom: 0.7rem; border-bottom: 1px solid var(--line);
+    }
+    h3 { font-size: 1rem; font-weight: 600; }
+
+    ul.dash { list-style: none; }
+    ul.dash li { position: relative; padding-left: 1rem; color: var(--sub); }
+    ul.dash li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+    ul.dash li + li { margin-top: 0.05rem; }
+    ul.dash li strong { color: var(--text); font-weight: 600; }
+
+    /* Key-value rows */
+    .row { display: grid; grid-template-columns: 170px 1fr; gap: 1rem; padding: 0.4rem 0; }
+    .row + .row { border-top: 1px dashed var(--line); }
+    .row .k { color: var(--muted); font-size: 0.88rem; }
+    .row .v { color: var(--text); }
+    .row .v .s { display: block; color: var(--sub); font-size: 0.88rem; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .chip { background: var(--chip); border-radius: 5px; padding: 0.12rem 0.55rem; font-size: 0.85rem; }
+
+    /* Competency */
+    .comp + .comp { margin-top: 0.8rem; }
+    .comp h3 { margin-bottom: 0.15rem; }
+
+    /* Experience */
+    .job { padding: 0.8rem 0; }
+    .job + .job { border-top: 1px solid var(--line); }
+    .job-head { margin-bottom: 0.3rem; }
+    .job-role { color: var(--accent); font-size: 0.88rem; font-weight: 500; }
+    .group { margin-top: 0.5rem; }
+    .group-t { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+
+    /* Software */
+    .app { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.45rem 0; }
+    .app + .app { border-top: 1px dashed var(--line); }
+    .app p { color: var(--sub); font-size: 0.88rem; }
+    .app a { font-size: 0.82rem; white-space: nowrap; }
+
+    /* Patents */
+    .pat { display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 1rem; padding: 0.45rem 0; }
+    .pat + .pat { border-top: 1px dashed var(--line); }
+    .pat [lang="ko"] { word-break: keep-all; }
+    .pat .st { color: var(--sub); font-size: 0.85rem; }
+    .pat .no { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); text-align: right; grid-row: span 2; align-self: center; }
+
+    footer { max-width: var(--w); margin: 0 auto; padding: 2rem 1.5rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); }
+
+    @media (max-width: 640px) {
+      .top nav { display: none; }
+      .hero { padding-top: 2.5rem; }
+      .hero h1 { font-size: 1.6rem; }
+      .row { grid-template-columns: 1fr; gap: 0.15rem; }
+      .app { flex-direction: column; gap: 0.2rem; }
+      .pat { grid-template-columns: 1fr; }
+      .pat .no { text-align: left; grid-row: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <nav>
+      <a href="#competency">Competency</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#software">Software</a>
+      <a href="#patents">Patents</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" id="about">
+    <h1>Jaegeun Yoon<small>윤재근</small></h1>
+    <p class="title">Principal Mechanical Systems Engineer · Medical Robotics</p>
+    <ul class="dash">
+      <li>Surgical &amp; vascular intervention robotics</li>
+      <li>High-precision actuation mechanisms</li>
+      <li>Medical diagnostic platforms</li>
+      <li>Full lifecycle: concept → regulatory approval → mass production</li>
+    </ul>
+    <div class="links">
+      <a href="mailto:jackyengineer@gmail.com">jackyengineer@gmail.com</a>
+      <a href="https://github.com/jaeegeunyoon" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://jackyengineer.tistory.com" target="_blank" rel="noopener">Blog ↗</a>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section id="profile">
+    <h2>Profile</h2>
+    <div class="row">
+      <div class="k">Born · MBTI</div>
+      <div class="v">1979.11.01 · INTJ</div>
+    </div>
+    <div class="row">
+      <div class="k">Email</div>
+      <div class="v"><a href="mailto:jackyengineer@gmail.com">jackyengineer@gmail.com</a></div>
+    </div>
+    <div class="row">
+      <div class="k">Education</div>
+      <div class="v">
+        M.S. candidate, Mechanical &amp; IT Convergence Engineering
+        
+        <span class="s">B.S., Mechanical Design Engineering</span>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Photography</div>
+      <div class="v">
+        Nikon D80 → D300 → D800 → Z7
+        <span class="s">Nikkor 35.8 · 24-70 F2.8 · 80-20 F2.8 · 70-200VR (Z mount)</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Trekking</div>
+      <div class="v"><a href="https://www.ramblr.com/web/mymap/trip/304780" target="_blank" rel="noopener">Ramblr Trail Log ↗</a></div>
+    </div>
+    <div class="row">
+      <div class="k">Blog</div>
+      <div class="v"><a href="https://jackyengineer.tistory.com" target="_blank" rel="noopener">jackyengineer.tistory.com ↗</a></div>
+    </div>
+  </section>
+
+  <!-- Competency -->
+  <section id="competency">
+    <h2>Core Competency</h2>
+    <div class="comp">
+      <h3>Precision Actuation &amp; Drive System Design</h3>
+      <ul class="dash">
+        <li>Compact high-precision motor / wire-driven mechanisms</li>
+        <li>Minimized backlash, improved kinematic response</li>
+        <li>Reduced assembly man-hours</li>
+      </ul>
+    </div>
+    <div class="comp">
+      <h3>End-to-End Development &amp; Certification</h3>
+      <ul class="dash">
+        <li>Concept → DVM → Pilot Production → Mass Production</li>
+        <li>International medical device regulatory approval</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack">
+    <h2>Technical Stack</h2>
+    <div class="row">
+      <div class="k">CAD / CAE</div>
+      <div class="v chips">
+        <span class="chip">SolidWorks (Large Assembly, Sheet Metal, Surface)</span>
+        <span class="chip">SolidWorks Simulation (Static)</span>
+        <span class="chip">AutoCAD</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Mechanism</div>
+      <div class="v chips">
+        <span class="chip">Motor &amp; reducer sizing (FBD)</span>
+        <span class="chip">Wire-driven &amp; multi-DOF mechanisms</span>
+        <span class="chip">Gravity compensation</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Standards &amp; Regulatory</div>
+      <div class="v chips">
+        <span class="chip">IEC 60601-1</span>
+        <span class="chip">GMP</span>
+        <span class="chip">ISO 14971</span>
+        <span class="chip">DHF / DMR</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Collaboration</div>
+      <div class="v chips">
+        <span class="chip">Google Workspace</span>
+        <span class="chip">Confluence</span>
+        <span class="chip">MS Teams</span>
+        <span class="chip">Slack</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>LN Robotics Co., Ltd.</h3>
+        <div class="job-role">Cardiovascular Intervention Robot — Development &amp; Mass Production Lead</div>
+      </div>
+      <ul class="dash">
+        <li><strong>MX-03</strong> mechanical development &amp; mass production scale-up lead</li>
+        <li>Multi-axis precision drive with <strong>21 compact motors</strong> for guidewire, balloon/stent, and guiding catheter</li>
+        <li>IEC 60601-1 safety testing management</li>
+        <li>First two mass-production units delivered to Asan Medical Center and Severance Hospital</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Osang Healthcare Co., Ltd.</h3>
+        <div class="job-role">IVD &amp; Therapeutic Device — Mechanical Lead</div>
+      </div>
+      <ul class="dash">
+        <li>Next-gen automated biochemistry analyzer — mechanical architecture lead</li>
+        <li>Precision mechanisms for molecular diagnostic (genetic analysis) instruments</li>
+        <li>Mechanical design of ultrasound therapy device for joints</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Nexturn Bioscience Co., Ltd. — Medical Division</h3>
+        <div class="job-role">Cardiovascular Intervention Robot — Slave Robot Mechanical Lead</div>
+      </div>
+      <ul class="dash">
+        <li>Robotic intervention platform — mechanical development lead</li>
+        <li><strong>3-DOF slave robot</strong>, <strong>9-DOF manipulator</strong> — design &amp; integration</li>
+        <li>IEC 60601 safety testing management</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Meerecompany Inc. — Surgical Robot Division</h3>
+        <div class="job-role">Laparoscopic Surgical Robot — Master Console &amp; Control Arm Mechanical Lead</div>
+      </div>
+      <div class="group">
+        <div class="group-t">Master Console &amp; 7-DOF Master Arm</div>
+        <ul class="dash">
+          <li>Three generations of master consoles — drive mechanism, ergonomic enclosure</li>
+          <li>Motor torque optimization for inertia reduction</li>
+          <li>0.8 kg constant-force spring gravity compensation (with AMETEK Hunter Spring, US) — 2× the service life of commercial springs</li>
+          <li>Anti-slip wire drive</li>
+          <li>Infinite-rotation master gripper — slip ring + rotation-center-preserving power transfer</li>
+          <li>GMP documentation (DHF/DMR), IEC 60601 testing, mass production support</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="group-t">Instruments, Simulator &amp; Single-Port</div>
+        <ul class="dash">
+          <li>Articulated drive for curved &amp; handheld instruments</li>
+          <li>Insulation tip cover for energy device end-effectors</li>
+          <li><strong>Revo-sim</strong> training simulator — co-developed with Surgical Science (Sweden)</li>
+          <li>Prototype tower unit for single-port surgical robot</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Earlier Experience</h3>
+      </div>
+      <ul class="dash">
+        <li><strong>Vatech Co., Ltd.</strong> — dental imaging system (PaX-400) mechanical development</li>
+        <li><strong>Mechanical design consulting</strong> — full-cycle design &amp; mass production, industrial products</li>
+        <li><strong>Dongjin Electric Co., Ltd.</strong> — development &amp; mass production of military starter motors and generators</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Software -->
+  <section id="software">
+    <h2>Software &amp; Dev</h2>
+    <div class="app">
+      <div>
+        <h3>JKeXper Viewer</h3>
+        <p>Free browser-based 3D CAD viewer</p>
+      </div>
+      <a href="https://github.com/jaeegeunyoon/jkexper-viewer" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="app">
+      <div>
+        <h3>JKeXper Unit Converter</h3>
+        <p>Engineering unit converter — mechanical, fluid, thermal</p>
+      </div>
+      <a href="https://github.com/jaeegeunyoon/jkexper-unit-converter" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="app">
+      <div>
+        <h3>JKeXper Converter</h3>
+        <p>DXF → SVG vector conversion</p>
+      </div>
+      <a href="https://jackyengineer.tistory.com/pages/JkeXper-Converter" target="_blank" rel="noopener">Blog ↗</a>
+    </div>
+    <div class="app">
+      <div>
+        <h3>JKeXper Function Grapher</h3>
+        <p>Interactive 2D/3D function plotter</p>
+      </div>
+      <a href="https://jackyengineer.tistory.com/pages/JkeXper-Function-Grapher" target="_blank" rel="noopener">Blog ↗</a>
+    </div>
+    <div class="app">
+      <div>
+        <h3>JKeXper TuneFinder</h3>
+        <p>Finds songs from partial lyrics or titles, with streaming links</p>
+      </div>
+      <a href="https://jackyengineer.tistory.com/pages/JkeXper-TuneFinder" target="_blank" rel="noopener">Blog ↗</a>
+    </div>
+  </section>
+
+  <!-- Patents -->
+  <section id="patents">
+    <h2>Patents</h2>
+    <div class="pat">
+      <div lang="ko">롤러 어셈블리 및 이를 포함하는 시술 도구 제어 장치</div>
+      <div class="no">10-2024-0181708</div>
+      <div class="st">Registered</div>
+    </div>
+    <div class="pat">
+      <div lang="ko">시술 도구 제어 장치에 연결되는 Y 커넥터 마운터 및 이를 포함하는 시술 도구 제어 시스템</div>
+      <div class="no">10-2024-0181694</div>
+      <div class="st">Registered</div>
+    </div>
+    <div class="pat">
+      <div lang="ko">수술용 로봇의 마스터 그리퍼 구조</div>
+      <div class="no">1014187170000</div>
+      <div class="st">Registered — KR, CN, US</div>
+    </div>
+    <div class="pat">
+      <div lang="ko">정하중 스프링 및 이를 구비한 수술용 로봇의 컨트롤 암 구조</div>
+      <div class="no">1013927060000</div>
+      <div class="st">Registered — KR</div>
+    </div>
+    <div class="pat">
+      <div lang="ko">컨트롤 암 구조 및 컨트롤 암 설계방법</div>
+      <div class="no">1020150030900</div>
+      <div class="st">Published — KR</div>
+    </div>
+    <div class="pat">
+      <div lang="ko">모터의 브레이크 구조</div>
+      <div class="no">2020130001433</div>
+      <div class="st">Published — KR</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Jaegeun Yoon (윤재근) · GitHub Pages
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
